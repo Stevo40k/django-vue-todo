@@ -14,8 +14,8 @@ def apiOverview(request):
         'List': '/todo-list/',
         'Detail View': '/todo-detail/<str:pk>',
         'Create': '/todo-create/',
-        'Update': '/todo-update/',
-        'Delete': '/todo-delete/<str:pk>',
+        'Update': '/todo-update/<str:pk>/',
+        'Delete': '/todo-delete/<str:pk>/',
     }
 
     return Response(api_urls)
@@ -53,7 +53,7 @@ def todoUpdate(request, pk):
 
 @api_view(['DELETE'])
 def todoDelete(request, pk):
-    todo = Todo.objects.get(id=pk)
+    todo = ToDo.objects.get(id=pk)
     todo.delete()
 
     return Response('Item successfully deleted!')
